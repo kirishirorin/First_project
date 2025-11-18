@@ -8,10 +8,12 @@ namespace Sprites.Scripts.DI
 
     {
         [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private PlayerHealth _playerHealth;
         
         override public void InstallBindings()
         {
             Container.Bind<PlayerMovement>().FromInstance(_playerMovement).AsSingle().NonLazy();
+            Container.Bind<PlayerHealth>().FromInstance(_playerHealth).AsSingle().NonLazy();
         }
     }
 }

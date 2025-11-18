@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1865533652624436924}
   - component: {fileID: 3505259886818910684}
-  m_Layer: 0
+  - component: {fileID: 3297407290145119625}
+  - component: {fileID: 4458024425861496371}
+  - component: {fileID: 5184794080993498525}
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +51,68 @@ MonoBehaviour:
   _moveSpeed: 2
   _freezeTime: 0
   _animator: {fileID: 661580296217180796}
+--- !u!114 &3297407290145119625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798688498627001877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11731f535774ae1927ca62a331315bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
+  _currentHealth: 0
+--- !u!114 &4458024425861496371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798688498627001877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f902948d9b24a1d8ea6464a1c5e03a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2
+--- !u!58 &5184794080993498525
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798688498627001877}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.26
 --- !u!1 &1982791863129900531
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +124,7 @@ GameObject:
   - component: {fileID: 2315477907685045690}
   - component: {fileID: 2683289215791970074}
   - component: {fileID: 661580296217180796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SlimeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

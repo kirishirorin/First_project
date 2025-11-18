@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5777178263326652147}
   - component: {fileID: 1594894641892783247}
-  m_Layer: 0
+  - component: {fileID: 3847849350781677234}
+  - component: {fileID: 8990260528550963073}
+  - component: {fileID: 9073483113546262368}
+  m_Layer: 7
   m_Name: Bee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +51,68 @@ MonoBehaviour:
   _moveSpeed: 2
   _freezeTime: 0
   _animator: {fileID: 105988507221890678}
+--- !u!114 &3847849350781677234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771196945254625198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11731f535774ae1927ca62a331315bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 15
+  _currentHealth: 0
+--- !u!114 &8990260528550963073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771196945254625198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f902948d9b24a1d8ea6464a1c5e03a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+--- !u!58 &9073483113546262368
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771196945254625198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35
 --- !u!1 &4458722019757813676
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +124,7 @@ GameObject:
   - component: {fileID: 4387666085176049937}
   - component: {fileID: 444464496246692988}
   - component: {fileID: 105988507221890678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BeeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7346108095708990691}
   - component: {fileID: 4434904761108857795}
-  m_Layer: 0
+  - component: {fileID: 4447548960834658651}
+  - component: {fileID: 679913199228178680}
+  - component: {fileID: 3830987039139378797}
+  m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +51,68 @@ MonoBehaviour:
   _moveSpeed: 2
   _freezeTime: 0
   _animator: {fileID: 6787882846122623657}
+--- !u!114 &4447548960834658651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613768046585802567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11731f535774ae1927ca62a331315bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 20
+  _currentHealth: 0
+--- !u!114 &679913199228178680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613768046585802567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f902948d9b24a1d8ea6464a1c5e03a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+--- !u!70 &3830987039139378797
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613768046585802567}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01, y: 0}
+  m_Size: {x: 0.44, y: 0.92}
+  m_Direction: 0
 --- !u!1 &7198368813002758848
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +124,7 @@ GameObject:
   - component: {fileID: 2287124822960696519}
   - component: {fileID: 7770127569013514235}
   - component: {fileID: 6787882846122623657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GoblinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
