@@ -13,7 +13,8 @@ namespace Sprites.Scripts.Player.Weapon
         protected float _damage;
         private DiContainer _diContainer;
         private int _currentLevel = 1;
-        private int _maxLevel = 8;
+        private int _maxLevel = 9;
+        private int _exp = 0;
 
         public List<WeaponStats> WeaponStats => _weaponStats;
         public int CurrentLevel => _currentLevel;
@@ -27,17 +28,21 @@ namespace Sprites.Scripts.Player.Weapon
 
         public virtual void LevelUp()
         {
-            if (_currentLevel < _maxLevel)
+            _exp++;
+            if (_exp % 10 == 0)
             {
-                _currentLevel++;
+                if (_currentLevel < _maxLevel)
+                {
+                    _currentLevel++;
+                }
+                SetStats(_currentLevel);
             }
-            SetStats(_currentLevel);
         }
 
 
         protected virtual void SetStats(int level)
         {
-            _damage = 5f; //WeaponStats[level-1].Damage;
+            _damage = WeaponStats[level-1].Damage;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +51,7 @@ namespace Sprites.Scripts.Player.Weapon
             {
                 float damage = Random.Range(_weaponStats[_currentLevel].Damage / 2f, _weaponStats[_currentLevel].Damage * 1.5f);
                 enemy.TakeDamage(damage);
+                LevelUp();
             }
         }
 

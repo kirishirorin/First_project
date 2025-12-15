@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Sprites.Scripts.Player.Weapon
 {
-    public class WeaponStats : MonoBehaviour
+    [Serializable] public class WeaponStats
     {
         [SerializeField] private float _speed, _damage, _range, _timeBetweenAttacks, _duration;
 

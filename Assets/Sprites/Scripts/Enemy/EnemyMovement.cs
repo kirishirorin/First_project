@@ -15,6 +15,12 @@ public class EnemyMovement : MonoBehaviour
     private WaitForSeconds _checkTime = new WaitForSeconds(3f);
     private Coroutine _distanceToHide;
 
+    public float MoveSpeed
+    {
+        get => _moveSpeed;
+        set => _moveSpeed = value;
+    }
+
 
     private void OnEnable()
     {
@@ -23,7 +29,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCoroutine(_distanceToHide);
+        if (_distanceToHide != null)
+        {
+            StopCoroutine(_distanceToHide);
+        }
     }
 
     private void Update()

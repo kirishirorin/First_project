@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.GameCore;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sprites.Scripts.Player.Weapon
 {
@@ -11,7 +12,8 @@ namespace Sprites.Scripts.Player.Weapon
     {
         [SerializeField] private Transform _targetContainer;
         [SerializeField] private CircleCollider2D _collider;
-        private List<EnemyHealth> _enemyInZone = new List<EnemyHealth>();
+        [SerializeField] private Text _auraLevelText;
+        private List<EnemyHealth> _enemyInZoneHealth = new List<EnemyHealth>();
         private WaitForSeconds _timeBetweenAttacks;
         private Coroutine _auraCoroutine;
         private float _range;
@@ -26,17 +28,25 @@ namespace Sprites.Scripts.Player.Weapon
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out EnemyHealth enemy))
+            if (other.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
             {
-                _enemyInZone.Add(enemy);
+                _enemyInZoneHealth.Add(enemyHealth);
+            }
+            if (CurrentLevel >= 5 && other.gameObject.TryGetComponent(out EnemyMovement enemyMovement))
+            {
+                enemyMovement.MoveSpeed = enemyMovement.MoveSpeed / 2;
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out EnemyHealth enemy))
+            if (other.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
             {
-                _enemyInZone.Remove(enemy);
+                _enemyInZoneHealth.Remove(enemyHealth);
+            }
+            if (CurrentLevel >= 5 && other.gameObject.TryGetComponent(out EnemyMovement enemyMovement))
+            {
+                enemyMovement.MoveSpeed = enemyMovement.MoveSpeed * 2;
             }
         }
         
@@ -59,9 +69,8 @@ namespace Sprites.Scripts.Player.Weapon
         protected override void SetStats(int level)
         {
             base.SetStats(level);
-            _damage = 3f;
-            _timeBetweenAttacks = new WaitForSeconds(1f);//new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
-            _range = 5f;//WeaponStats[CurrentLevel - 1].Range;
+            _timeBetweenAttacks = new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
+            _range = WeaponStats[CurrentLevel - 1].Range;
             _targetContainer.transform.localScale = Vector3.one *  _range;
             _collider.radius = _range / 3.1f;
         }
@@ -71,10 +80,12 @@ namespace Sprites.Scripts.Player.Weapon
         {
             while (true)
             {
-                for (int i = 0; i < _enemyInZone.Count; i++)
+                for (int i = 0; i < _enemyInZoneHealth.Count; i++)
                 {
-                    _enemyInZone[i].TakeDamage(_damage);
+                    _enemyInZoneHealth[i].TakeDamage(_damage);
                 }
+                LevelUp();
+                _auraLevelText.text = CurrentLevel.ToString();
                 
                 yield return _timeBetweenAttacks;
             }

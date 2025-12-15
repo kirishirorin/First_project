@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sprites.Scripts.GameCore;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sprites.Scripts.Player.Weapon
 {
@@ -17,9 +18,15 @@ namespace Sprites.Scripts.Player.Weapon
         [SerializeField] private List<Collider2D> _collider2X;
         [SerializeField] private List<Transform> _transformSprite2X;
         [SerializeField] private Transform _targetContainer2X;
+        [Header("Triple")]
+        [SerializeField] private List<SpriteRenderer> _spriteRenderer3X = new List<SpriteRenderer>();
+        [SerializeField] private List<Collider2D> _collider3X;
+        [SerializeField] private List<Transform> _transformSprite3X;
+        [SerializeField] private Transform _targetContainer3X;
+        
+        [SerializeField] private Text _fireballLevelText;
 
         private WaitForSeconds _interval, _duration, _timeBetweenAttacks;
-        private float _damage;
         private float _rotationSpeed, _range;
         private Coroutine _attackCoroutine;
         
@@ -57,18 +64,18 @@ namespace Sprites.Scripts.Player.Weapon
         {
             base.LevelUp();
             SetupWeapon();
+            _fireballLevelText.text = CurrentLevel.ToString();
         }
 
 
         protected override void SetStats(int level)
         {
             base.SetStats(level);
-            _damage = 10f;//WeaponStats[level-1].Damage;
-            _rotationSpeed = 200f;//WeaponStats[CurrentLevel - 1].Speed;
-            _range = 2f;//WeaponStats[CurrentLevel - 1].Range;
-            _duration = new WaitForSeconds(1.5f);//WeaponStats[CurrentLevel - 1].Duration); // Длительность действия оружия
+            _rotationSpeed = WeaponStats[CurrentLevel - 1].Speed;
+            _range = WeaponStats[CurrentLevel - 1].Range;
+            _duration = new WaitForSeconds(WeaponStats[CurrentLevel - 1].Duration); // Длительность действия оружия
             _timeBetweenAttacks =
-                new WaitForSeconds(2f); //WeaponStats[CurrentLevel - 1].TimeBetweenAttacks); // Перезарядка оружия
+                new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks); // Перезарядка оружия
         }
 
 
@@ -78,13 +85,15 @@ namespace Sprites.Scripts.Player.Weapon
             {
                 _targetContainer1X.gameObject.SetActive(true);
                 _targetContainer2X.gameObject.SetActive(false);
-                transform.localPosition = new Vector3(_range, 0, 0);
+                _targetContainer3X.gameObject.SetActive(false);
+                _transformSprite1X.transform.localPosition = new Vector3(_range, 0, 0);
                 _collider1X.offset = new Vector2(_range, 0);
             }
-            else
+            else if (CurrentLevel >= 4 && CurrentLevel <= 5)
             {
                 _targetContainer1X.gameObject.SetActive(false);
                 _targetContainer2X.gameObject.SetActive(true);
+                _targetContainer3X.gameObject.SetActive(false);
                 for (int i = 0; i < _collider2X.Count; i++)
                 {
                     _collider2X[i].gameObject.SetActive(true);
@@ -94,6 +103,23 @@ namespace Sprites.Scripts.Player.Weapon
                 _transformSprite2X[1].localPosition = new Vector3(-_range, 0, 0);
                 _collider2X[0].offset = new Vector2(_range, 0);
                 _collider2X[1].offset = new Vector2(-_range, 0);
+            }
+            else
+            {
+                _targetContainer1X.gameObject.SetActive(false);
+                _targetContainer2X.gameObject.SetActive(false);
+                _targetContainer3X.gameObject.SetActive(true);
+                for (int i = 0; i < _collider3X.Count; i++)
+                {
+                    _collider3X[i].gameObject.SetActive(true);
+                }
+
+                _transformSprite3X[0].localPosition = new Vector3(_range, 0, 0);
+                _transformSprite3X[1].localPosition = new Vector3(-_range, 0, 0);
+                _transformSprite3X[2].localPosition = new Vector3(0, -_range, 0);
+                _collider3X[0].offset = new Vector2(_range, 0);
+                _collider3X[1].offset = new Vector2(-_range, 0);
+                _collider3X[2].offset = new Vector2(0, -_range);
             }
         }
 
@@ -107,7 +133,7 @@ namespace Sprites.Scripts.Player.Weapon
                     _spriteRenderer1X.enabled = !_spriteRenderer1X.enabled;
                     _collider1X.enabled = !_collider1X.enabled;
                 }
-                else
+                else if (CurrentLevel >= 4 && CurrentLevel <= 5)
                 {
                     for (int i = 0; i < _spriteRenderer2X.Count; i++)
                     {
@@ -115,8 +141,16 @@ namespace Sprites.Scripts.Player.Weapon
                         _collider2X[i].enabled = !_collider2X[i].enabled;
                     }
                 }
+                else
+                {
+                    for (int i = 0; i < _spriteRenderer3X.Count; i++)
+                    {
+                        _spriteRenderer3X[i].enabled = !_spriteRenderer3X[i].enabled;
+                        _collider3X[i].enabled = !_collider3X[i].enabled;
+                    }
+                }
 
-                _interval = _spriteRenderer1X.enabled || _spriteRenderer2X[0] ? _duration : _timeBetweenAttacks;
+                _interval = _spriteRenderer1X.enabled || _spriteRenderer2X[0] || _spriteRenderer3X[0] ? _duration : _timeBetweenAttacks;
                 yield return _interval;
             }
             
