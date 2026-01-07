@@ -17,6 +17,7 @@ namespace Sprites.Scripts.Player.Weapon
         private int _exp = 0;
 
         public List<WeaponStats> WeaponStats => _weaponStats;
+        public float Damage => _damage;
         public int CurrentLevel => _currentLevel;
         public int MaxLevel => _maxLevel;
 
@@ -42,7 +43,7 @@ namespace Sprites.Scripts.Player.Weapon
 
         protected virtual void SetStats(int level)
         {
-            _damage = WeaponStats[level-1].Damage;
+            _damage = WeaponStats[level].Damage;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
