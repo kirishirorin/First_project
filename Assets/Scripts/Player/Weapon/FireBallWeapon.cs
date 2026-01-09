@@ -70,7 +70,7 @@ namespace Player.Weapon
 
         protected override void SetStats(int level)
         {
-            base.SetStats(level);
+            base.SetStats(CurrentLevel);
             _rotationSpeed = WeaponStats[CurrentLevel - 1].Speed;
             _range = WeaponStats[CurrentLevel - 1].Range;
             _duration = new WaitForSeconds(WeaponStats[CurrentLevel - 1].Duration); // Длительность действия оружия

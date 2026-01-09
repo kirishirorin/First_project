@@ -44,7 +44,7 @@ namespace Player.Weapon.FrostBolt
 
         protected override void SetStats(int level)
         {
-            base.SetStats(level);
+            base.SetStats(CurrentLevel);
             _timeBetweenAttack = new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
             _speed = WeaponStats[CurrentLevel - 1].Speed;
             _duration = WeaponStats[CurrentLevel - 1].Duration;

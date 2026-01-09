@@ -69,7 +69,7 @@ namespace Player.Weapon
 
         protected override void SetStats(int level)
         {
-            base.SetStats(level);
+            base.SetStats(CurrentLevel);
             _timeBetweenAttacks = new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
             _range = WeaponStats[CurrentLevel - 1].Range;
             _targetContainer.transform.localScale = Vector3.one *  _range;

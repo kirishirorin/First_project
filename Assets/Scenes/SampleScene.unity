@@ -261,6 +261,7 @@ Transform:
   - {fileID: 1086407632}
   - {fileID: 1254115709}
   - {fileID: 1056883737}
+  - {fileID: 651220481}
   m_Father: {fileID: 740722769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133684178
@@ -818,6 +819,7 @@ Transform:
   - {fileID: 628310978}
   - {fileID: 1915599970}
   - {fileID: 1125743745}
+  - {fileID: 1193369715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &448900823
@@ -1277,6 +1279,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433047346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &651220478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651220481}
+  - component: {fileID: 651220479}
+  - component: {fileID: 651220480}
+  m_Layer: 6
+  m_Name: TrapWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &651220479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651220478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c850e4ba476444682fb8ed6eb9e9720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponStats:
+  - _speed: 0
+    _damage: 2
+    _range: 0
+    _timeBetweenAttacks: 3
+    _duration: 0
+  - _speed: 0
+    _damage: 3
+    _range: 0
+    _timeBetweenAttacks: 2.7
+    _duration: 0
+  - _speed: 0
+    _damage: 5
+    _range: 0
+    _timeBetweenAttacks: 2.5
+    _duration: 0
+  - _speed: 0
+    _damage: 7
+    _range: 0
+    _timeBetweenAttacks: 2.2
+    _duration: 0
+  - _speed: 0
+    _damage: 9
+    _range: 0
+    _timeBetweenAttacks: 2
+    _duration: 0
+  - _speed: 0
+    _damage: 11
+    _range: 0
+    _timeBetweenAttacks: 1.8
+    _duration: 0
+  - _speed: 0
+    _damage: 13
+    _range: 0
+    _timeBetweenAttacks: 1.5
+    _duration: 0
+  - _speed: 0
+    _damage: 15
+    _range: 0
+    _timeBetweenAttacks: 1
+    _duration: 0
+  _objectPool: {fileID: 651220480}
+  _container: {fileID: 1193369715}
+--- !u!114 &651220480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651220478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be24ff7aa40d4c9db7d6a25964dbbe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8672234052270955312, guid: 2e5c1bbe07472bb4aadf355c8f2d96de, type: 3}
+--- !u!4 &651220481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651220478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 36315617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665602477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1430,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 740722771}
   _surikenWeapon: {fileID: 1254115707}
   _frostBoltWeapon: {fileID: 1056883736}
+  _trapWeapon: {fileID: 651220479}
 --- !u!114 &665602480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,7 +2274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1056883736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2632,6 +2736,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1193369714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193369715}
+  m_Layer: 0
+  m_Name: TrapContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1193369715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193369714}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 433047346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197317749
 GameObject:
   m_ObjectHideFlags: 0

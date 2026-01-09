@@ -49,11 +49,11 @@ namespace Player.Weapon.Suriken
 
         protected override void SetStats(int level)
         {
-            base.SetStats(level);
-            _timeBetweenAttacks  = new WaitForSeconds(WeaponStats[level].TimeBetweenAttacks);
-            _speed = WeaponStats[level].Speed;
-            _range = WeaponStats[level].Range;
-            _duration = WeaponStats[level].Duration;
+            base.SetStats(CurrentLevel);
+            _timeBetweenAttacks  = new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
+            _speed = WeaponStats[CurrentLevel - 1].Speed;
+            _range = WeaponStats[CurrentLevel - 1].Range;
+            _duration = WeaponStats[CurrentLevel - 1].Duration;
         }
 
 
