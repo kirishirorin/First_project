@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Sprites.Scripts.GameCore.Pool
+namespace GameCore.Pool
 {
     public class ObjectPool : MonoBehaviour, IFactory<GameObject>
     {

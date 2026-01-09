@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
-  _freezeTime: 0
+  _freezeTime: 3
   _animator: {fileID: 6787882846122623657}
 --- !u!114 &4447548960834658651
 MonoBehaviour:

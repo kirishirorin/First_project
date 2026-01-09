@@ -2,7 +2,7 @@
 using System.Collections;
 using Player;
 using Sprites.Scripts.GameCore;
-using Sprites.Scripts.GameCore.Pool;
+using GameCore.Pool;
 using UnityEngine;
 using Zenject;
 

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sprites.Scripts.Enemy;
+using Sprites.Scripts.Player.Weapon;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Sprites.Scripts.Player.Weapon
+namespace Player.Weapon
 {
     public abstract class BaseWeapon : MonoBehaviour
     {
@@ -43,7 +44,7 @@ namespace Sprites.Scripts.Player.Weapon
 
         protected virtual void SetStats(int level)
         {
-            _damage = WeaponStats[level].Damage;
+            _damage = WeaponStats[level - 1].Damage;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -57,8 +58,7 @@ namespace Sprites.Scripts.Player.Weapon
         }
 
 
-        [Inject]
-        private void Construct(DiContainer diContainer)
+        [Inject] private void Construct(DiContainer diContainer)
         {
             _diContainer = diContainer;
         }

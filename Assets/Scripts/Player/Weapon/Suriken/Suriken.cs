@@ -1,8 +1,9 @@
 ﻿using System;
+using Sprites.Scripts.Player.Weapon;
 using UnityEngine;
 using Zenject;
 
-namespace Sprites.Scripts.Player.Weapon.Suriken
+namespace Player.Weapon.Suriken
 {
     public class Suriken : BaseProjectileWeapon
     {

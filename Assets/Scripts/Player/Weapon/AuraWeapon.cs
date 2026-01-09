@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player.Weapon;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.GameCore;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Sprites.Scripts.Player.Weapon
+namespace Player.Weapon
 {
     public class AuraWeapon : BaseWeapon, IActivate
     {

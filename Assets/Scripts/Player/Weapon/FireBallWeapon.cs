@@ -5,7 +5,7 @@ using Sprites.Scripts.GameCore;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Sprites.Scripts.Player.Weapon
+namespace Player.Weapon
 {
     public class FireBallWeapon : BaseWeapon, IActivate
     {

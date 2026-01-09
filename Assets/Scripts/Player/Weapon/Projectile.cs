@@ -4,7 +4,7 @@ using Sprites.Scripts.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Sprites.Scripts.Player.Weapon
+namespace Player.Weapon
 {
     public abstract class BaseProjectileWeapon : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace Sprites.Scripts.Player.Weapon
         protected virtual void OnEnable() => StartCoroutine(TimerToHide());
 
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.TryGetComponent(out EnemyHealth enemy))
             {

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using Player;
-using Sprites.Scripts.GameCore.Pool;
+using GameCore.Pool;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.WSA;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Sprites.Scripts.Player.Weapon.Suriken
+namespace Player.Weapon.Suriken
 {
     public class SurikenWeapon : BaseWeapon
     {
@@ -18,6 +19,7 @@ namespace Sprites.Scripts.Player.Weapon.Suriken
         private Coroutine _surikenCoroutine;
         private float _duration, _speed, _range;
         private Vector3 _direction;
+        [SerializeField] private Text _surikenLevelText;
 
         public float Duration => _duration;
         public float Speed => _speed;

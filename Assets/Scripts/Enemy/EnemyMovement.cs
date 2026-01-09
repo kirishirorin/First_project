@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using Player;
 using UnityEngine;
 using Zenject;
@@ -13,12 +14,21 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 _direction;
     private PlayerMovement _playerMovement;
     private WaitForSeconds _checkTime = new WaitForSeconds(3f);
+    private WaitForSeconds _freeze;
     private Coroutine _distanceToHide;
+    private float _initialSpeed;
 
     public float MoveSpeed
     {
         get => _moveSpeed;
         set => _moveSpeed = value;
+    }
+
+
+    private void Start()
+    {
+        _initialSpeed =  _moveSpeed;
+        _freeze = new WaitForSeconds(_freezeTime);
     }
 
 
@@ -38,6 +48,15 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+
+    public void FreezeEnemy(float percent)
+    {
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(StartFreeze(percent));
+        }
     }
 
     private void Move()
@@ -61,5 +80,14 @@ public class EnemyMovement : MonoBehaviour
             yield return _checkTime;
         }
     }
+
+
+    private IEnumerator StartFreeze(float percent)
+    {
+        _moveSpeed *= percent;
+        yield return _freeze;
+        _moveSpeed = _initialSpeed;
+    }
+    
     [Inject] private void Construct(PlayerMovement playerMovement) => _playerMovement = playerMovement;
 }
