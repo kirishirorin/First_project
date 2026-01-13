@@ -9,7 +9,7 @@ namespace Player
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Animator _animator;
         private Vector3 _movement;
-        private Vector3 Movement => _movement;
+        public Vector3 Movement => _movement;
 
         void Update()
         {
