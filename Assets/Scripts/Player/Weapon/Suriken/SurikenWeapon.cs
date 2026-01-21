@@ -15,11 +15,11 @@ namespace Player.Weapon.Suriken
         [SerializeField] private ObjectPool _objectPool;
         [SerializeField] private Transform _container;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private Text _surikenLevelText;
         private WaitForSeconds _timeBetweenAttacks;
         private Coroutine _surikenCoroutine;
         private float _duration, _speed, _range;
         private Vector3 _direction;
-        [SerializeField] private Text _surikenLevelText;
 
         public float Duration => _duration;
         public float Speed => _speed;
@@ -34,7 +34,7 @@ namespace Player.Weapon.Suriken
 
         public void Activate()
         {
-            SetStats(0);
+            SetStats(CurrentLevel);
             _surikenCoroutine = StartCoroutine(SpawnSuriken());
         }
 
@@ -49,11 +49,12 @@ namespace Player.Weapon.Suriken
 
         protected override void SetStats(int level)
         {
-            base.SetStats(CurrentLevel);
-            _timeBetweenAttacks  = new WaitForSeconds(WeaponStats[CurrentLevel - 1].TimeBetweenAttacks);
-            _speed = WeaponStats[CurrentLevel - 1].Speed;
-            _range = WeaponStats[CurrentLevel - 1].Range;
-            _duration = WeaponStats[CurrentLevel - 1].Duration;
+            base.SetStats(level);
+            _timeBetweenAttacks  = new WaitForSeconds(WeaponStats[level - 1].TimeBetweenAttacks);
+            _speed = WeaponStats[level - 1].Speed;
+            _range = WeaponStats[level - 1].Range;
+            _duration = WeaponStats[level - 1].Duration;
+            _surikenLevelText.text = level.ToString();
         }
 
 

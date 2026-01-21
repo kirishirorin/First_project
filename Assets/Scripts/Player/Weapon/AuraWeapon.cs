@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Player.Weapon;
+using Scripts.Enemy;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.GameCore;
 using UnityEngine;

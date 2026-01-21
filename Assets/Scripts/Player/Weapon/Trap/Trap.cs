@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using GameCore.Pool;
 using Player.Weapon;
+using Scripts.Enemy;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.GameCore;
 using UnityEngine;

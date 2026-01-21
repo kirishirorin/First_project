@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sprites.Scripts.GameCore.Health;
 using UnityEngine;
 
-namespace Sprites.Scripts.Enemy
+namespace Scripts.Enemy
 {
     public class EnemyHealth : ObjectHealth
     {

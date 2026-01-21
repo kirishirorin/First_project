@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Scripts.Enemy;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.Player.Weapon;
 using UnityEngine;
@@ -14,8 +15,8 @@ namespace Player.Weapon
         protected float _damage;
         private DiContainer _diContainer;
         private int _currentLevel = 1;
-        private int _maxLevel = 9;
-        private int _exp = 0;
+        private int _maxLevel = 8;
+        private int _exp;
 
         public List<WeaponStats> WeaponStats => _weaponStats;
         public float Damage => _damage;
@@ -25,13 +26,17 @@ namespace Player.Weapon
 
         private void Awake() => _diContainer.Inject(this);
 
-        protected virtual void Start() => SetStats(_currentLevel);
+        protected virtual void Start()
+        {
+            _exp = 0;
+            SetStats(_currentLevel);
+        }
 
 
         public virtual void LevelUp()
         {
             _exp++;
-            if (_exp % 10 == 0)
+            if (_exp % 1 == 0)
             {
                 if (_currentLevel < _maxLevel)
                 {

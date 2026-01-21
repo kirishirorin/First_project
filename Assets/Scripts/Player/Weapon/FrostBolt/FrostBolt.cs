@@ -1,6 +1,4 @@
-﻿using System;
-using Sprites.Scripts.Enemy;
-using Sprites.Scripts.Player.Weapon;
+﻿using Scripts.Enemy;
 using UnityEngine;
 using Zenject;
 
@@ -28,7 +26,19 @@ namespace Player.Weapon.FrostBolt
             if (other.gameObject.TryGetComponent(out EnemyHealth enemy))
             {
                 enemy.TakeDamage(Damage);
-                enemy.GetComponent<EnemyMovement>().FreezeEnemy(0.5f);
+                _frostBoltWeapon.LevelUp();
+                if (_frostBoltWeapon.CurrentLevel < 5)
+                {
+                    enemy.GetComponent<EnemyMovement>().FreezeEnemy(0.5f);
+                }
+                else
+                {
+                    float success = Random.Range(0f, 1f);
+                    if (success > 0.5f)
+                    {
+                        enemy.GetComponent<EnemyMovement>().FreezeEnemy(0f);
+                    }
+                }
             }
 
             if (_frostBoltWeapon.CurrentLevel <= 4)

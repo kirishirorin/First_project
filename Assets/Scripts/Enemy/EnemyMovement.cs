@@ -5,6 +5,7 @@ using System.ComponentModel.Design.Serialization;
 using Player;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -80,14 +81,16 @@ public class EnemyMovement : MonoBehaviour
             yield return _checkTime;
         }
     }
-
-
-    private IEnumerator StartFreeze(float percent)
+    
+    public IEnumerator StartFreeze(float percent)
     {
         _moveSpeed *= percent;
         yield return _freeze;
         _moveSpeed = _initialSpeed;
     }
-    
-    [Inject] private void Construct(PlayerMovement playerMovement) => _playerMovement = playerMovement;
+
+    [Inject] private void Construct(PlayerMovement playerMovement)
+    {
+        _playerMovement = playerMovement;
+    }
 }
