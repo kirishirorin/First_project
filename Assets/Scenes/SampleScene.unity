@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331408097fff485c8b138ff678382ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageTextSpawner: {fileID: 953886436}
 --- !u!1 &699382934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2226,8 @@ GameObject:
   m_Component:
   - component: {fileID: 953886433}
   - component: {fileID: 953886434}
+  - component: {fileID: 953886436}
+  - component: {fileID: 953886435}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2260,6 +2263,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHealthImage: {fileID: 328091707}
+--- !u!114 &953886435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953886432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be24ff7aa40d4c9db7d6a25964dbbe96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 5013182505194298819, guid: ed9e7bbcf839f0c448ca005c4358a4d3, type: 3}
+--- !u!114 &953886436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953886432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d0cdc8b9c74320b2b9cf3685310c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPool: {fileID: 953886435}
 --- !u!1 &1056883735
 GameObject:
   m_ObjectHideFlags: 0

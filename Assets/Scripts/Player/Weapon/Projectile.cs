@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Scripts.Enemy;
+using Enemy;
 using Sprites.Scripts.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;

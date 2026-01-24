@@ -1,4 +1,4 @@
-﻿using Scripts.Enemy;
+﻿using Enemy;
 using UnityEngine;
 using Zenject;
 

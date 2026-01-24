@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Scripts.Enemy;
+using Enemy;
 using Sprites.Scripts.Enemy;
 using Sprites.Scripts.Player.Weapon;
 using UnityEngine;
@@ -36,7 +36,7 @@ namespace Player.Weapon
         public virtual void LevelUp()
         {
             _exp++;
-            if (_exp % 1 == 0)
+            if (_exp % 10 == 0)
             {
                 if (_currentLevel < _maxLevel)
                 {

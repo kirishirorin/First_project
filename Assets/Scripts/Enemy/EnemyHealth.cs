@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using GameCore.UI;
 using Sprites.Scripts.GameCore.Health;
 using UnityEngine;
+using Zenject;
 
-namespace Scripts.Enemy
+namespace Enemy
 {
     public class EnemyHealth : ObjectHealth
     {
         [SerializeField] private Transform _flash;
         private WaitForSeconds _tick = new WaitForSeconds(1f);
+        private DamageTextSpawner _damageTextSpawner;
         public override void TakeDamage(float damage)
         {
             base.TakeDamage(damage);
+            _damageTextSpawner.Activate(transform, (int)damage);
             if (CurrentHealth <= 0)
             {
                 gameObject.SetActive(false);
@@ -52,6 +56,12 @@ namespace Scripts.Enemy
                 TakeDamage(roundDamage);
                 yield return _tick;
             }
+        }
+
+        [Inject]
+        private void Construct(DamageTextSpawner damageTextSpawner)
+        {
+            _damageTextSpawner =  damageTextSpawner; 
         }
     }
 }
