@@ -33,7 +33,7 @@ namespace Player.Weapon
             }
             if (CurrentLevel >= 5 && other.gameObject.TryGetComponent(out EnemyMovement enemyMovement))
             {
-                enemyMovement.MoveSpeed = enemyMovement.MoveSpeed / 2;
+                enemyMovement.FreezeEnemy(0.5f);
             }
         }
 

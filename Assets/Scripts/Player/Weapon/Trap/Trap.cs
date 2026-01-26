@@ -1,9 +1,5 @@
 ﻿using System.Collections;
-using GameCore.Pool;
-using Player.Weapon;
 using Enemy;
-using Sprites.Scripts.Enemy;
-using Sprites.Scripts.GameCore;
 using UnityEngine;
 using Zenject;
 
@@ -43,7 +39,7 @@ namespace Player.Weapon.Trap
         {
             while (true)
             {
-                if (Vector3.Distance(transform.position, _playerHealth.gameObject.transform.position) > 15f)
+                if (Vector3.Distance(transform.position, _playerHealth.transform.position) > 15f)
                 {
                     gameObject.SetActive(false);
                 }

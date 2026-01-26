@@ -2,7 +2,7 @@
 using Player;
 using UnityEngine;
 
-namespace Sprites.Scripts.Enemy
+namespace Enemy
 {
     public class EnemyCollision : MonoBehaviour
     {

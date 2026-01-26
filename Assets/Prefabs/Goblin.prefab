@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07d2694599e5574cb51c5878176ca83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeed: 2.5
   _freezeTime: 3
   _animator: {fileID: 6787882846122623657}
 --- !u!114 &4447548960834658651
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _currentHealth: 0
-  _flash: {fileID: 0}
+  _flash: {fileID: 8372877099691579758}
 --- !u!114 &679913199228178680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f902948d9b24a1d8ea6464a1c5e03a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 7
 --- !u!70 &3830987039139378797
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

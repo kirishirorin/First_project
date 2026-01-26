@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
 using GameCore.UI;
-using Sprites.Scripts.GameCore.Health;
+using GameCore.Health;
 using UnityEngine;
 using Zenject;
 

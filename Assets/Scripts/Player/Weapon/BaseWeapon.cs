@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enemy;
-using Sprites.Scripts.Enemy;
 using Sprites.Scripts.Player.Weapon;
 using UnityEngine;
 using Zenject;

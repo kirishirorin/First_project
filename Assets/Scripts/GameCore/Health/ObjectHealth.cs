@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Sprites.Scripts.GameCore.Health
+namespace GameCore.Health
 {
     public abstract class ObjectHealth : MonoBehaviour, IDamageable
     {

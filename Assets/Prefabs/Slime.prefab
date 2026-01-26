@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   _currentHealth: 0
-  _flash: {fileID: 0}
+  _flash: {fileID: 8402749939922151070}
 --- !u!114 &4458024425861496371
 MonoBehaviour:
   m_ObjectHideFlags: 0

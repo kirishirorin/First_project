@@ -1,4 +1,4 @@
-﻿namespace Sprites.Scripts.GameCore.Health
+﻿namespace GameCore.Health
 {
     public interface IDamageable
     {

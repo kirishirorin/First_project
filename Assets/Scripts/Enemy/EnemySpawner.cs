@@ -6,7 +6,7 @@ using GameCore.Pool;
 using UnityEngine;
 using Zenject;
 
-namespace Sprites.Scripts.Enemy
+namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour, IActivate
     {
@@ -18,11 +18,6 @@ namespace Sprites.Scripts.Enemy
         private WaitForSeconds _interval;
         private GetRandomSpawnPoint _getRandomSpawn;
         private Coroutine _spawnCoroutine;
-
-        private void Awake()
-        {
-            Activate();
-        }
 
         private void Start() => _interval = new WaitForSeconds(_timeToSpawn);
         

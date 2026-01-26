@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Sprites.Scripts.GameCore.Health;
+using GameCore.Health;
 using UnityEngine;
 
 namespace Player
@@ -10,6 +10,7 @@ namespace Player
         public Action OnHealthChanged;
         private WaitForSeconds _regenerationInterval  = new WaitForSeconds(5f);
         private float _regenerationValue = 1f;
+        public object gameObject;
 
         private void Start() => StartCoroutine(Regeneration());
 
