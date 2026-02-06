@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using GameCore.ExperienceSystem;
 using GameCore.UI;
 using GameCore.Health;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Enemy
         [SerializeField] private Transform _flash;
         private WaitForSeconds _tick = new WaitForSeconds(1f);
         private DamageTextSpawner _damageTextSpawner;
+        private ExperienceSpawner  _experienceSpawner;
         public override void TakeDamage(float damage)
         {
             base.TakeDamage(damage);
@@ -19,6 +21,7 @@ namespace Enemy
             if (CurrentHealth <= 0)
             {
                 gameObject.SetActive(false);
+                ChanceToDropExperience();
             }
             else
             {
@@ -29,6 +32,14 @@ namespace Enemy
         public void Born(float damage)
         {
             StartCoroutine(StartBorn(damage));
+        }
+
+        private void ChanceToDropExperience()
+        {
+            if (Random.Range(0f, 100f) <= 33f)
+            {
+                _experienceSpawner.Spawn(transform.position);
+            }
         }
 
 
@@ -59,9 +70,10 @@ namespace Enemy
         }
 
         [Inject]
-        private void Construct(DamageTextSpawner damageTextSpawner)
+        private void Construct(DamageTextSpawner damageTextSpawner, ExperienceSpawner  experienceSpawner)
         {
-            _damageTextSpawner =  damageTextSpawner; 
+            _damageTextSpawner =  damageTextSpawner;
+            _experienceSpawner =  experienceSpawner;
         }
     }
 }
