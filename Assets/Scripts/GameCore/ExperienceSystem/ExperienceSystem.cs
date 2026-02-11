@@ -1,4 +1,5 @@
 ﻿using System;
+using GameCore.UpgradeSystem;
 using UnityEngine;
 
 namespace GameCore.ExperienceSystem
@@ -42,6 +43,8 @@ namespace GameCore.ExperienceSystem
         {
             _currentExperience -= _experienceToUp;
             _currentLevel++;
+            _upgradeWindow.SetActive(true);
+            _upgradeWindow.GetComponent<UpgradeWindow>().GetRandomCards();
             switch (_currentLevel)
             {
                 case <= 20:

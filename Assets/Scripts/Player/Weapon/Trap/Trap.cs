@@ -8,6 +8,7 @@ namespace Player.Weapon.Trap
     public class Trap : BaseProjectileWeapon
     {
         [SerializeField] private CircleCollider2D _collider;
+        [SerializeField] private float _disableDistance;
         private WaitForSeconds _checkInterval =  new WaitForSeconds(3f);
         private PlayerHealth  _playerHealth;
         private TrapWeapon _trapWeapon;
@@ -39,7 +40,7 @@ namespace Player.Weapon.Trap
         {
             while (true)
             {
-                if (Vector3.Distance(transform.position, _playerHealth.transform.position) > 15f)
+                if (Vector3.Distance(transform.position, _playerHealth.transform.position) > _disableDistance)
                 {
                     gameObject.SetActive(false);
                 }

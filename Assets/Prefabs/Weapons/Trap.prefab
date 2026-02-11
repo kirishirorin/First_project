@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 5154342346684768812}
+  _disableDistance: 15
 --- !u!58 &5154342346684768812
 CircleCollider2D:
   m_ObjectHideFlags: 0

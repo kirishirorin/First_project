@@ -1,10 +1,9 @@
-﻿using System;
-using Player;
+﻿using Player;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Sprites.Scripts.GameCore.UI
+namespace GameCore.UI
 {
     public class HealthUIUpdater : MonoBehaviour
     {

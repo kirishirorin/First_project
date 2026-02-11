@@ -48,5 +48,7 @@ namespace Player
             _animator.SetFloat("Vertical", _movement.y);
             _animator.SetFloat("Speed", _movement.sqrMagnitude);
         }
+
+        public void UpgradeSpeed() => _moveSpeed += 0.3f;
     }
 }

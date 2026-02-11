@@ -23,7 +23,6 @@ namespace Player.Weapon.Suriken
 
         public float Duration => _duration;
         public float Speed => _speed;
-        public Vector3 Direction => _direction;
 
 
         private void OnEnable()
@@ -74,10 +73,7 @@ namespace Player.Weapon.Suriken
                     suriken.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     yield return _timeBetweenAttacks;
                 }
-                else
-                {
-                    yield return _timeBetweenAttacks;
-                }
+                yield return _timeBetweenAttacks;
             }
         }
     }

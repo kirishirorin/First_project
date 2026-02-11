@@ -30,6 +30,17 @@ namespace Player
             }
         }
 
+        public void UpgradeHealth()
+        {
+            _maxHealth += 10;
+            _currentHealth += 10;
+        }
+
+        public void UpgradeRegeneration()
+        {
+            _regenerationValue++;
+        }
+
         private IEnumerator Regeneration()
         {
             while (true)
