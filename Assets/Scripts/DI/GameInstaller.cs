@@ -1,5 +1,6 @@
 ﻿using GameCore.ExperienceSystem;
 using GameCore.LevelSystem;
+using GameCore.Loot;
 using GameCore.Pause;
 using GameCore.UI;
 using GameCore.UpgradeSystem;
@@ -19,9 +20,13 @@ namespace DI
         [SerializeField] private ExperienceSystem _experienceSystem;
         [SerializeField] private UpgradeWindow _upgradeWindow;
         [SerializeField] private GamePause _gamePause;
+        [SerializeField] private CoinsUIUpdater _coinsUIUpdater;
+        [SerializeField] private TreasureWindow _treasureWindow;
+        [SerializeField] private RewardCoinsAnimation _rewardCoinsAnimation;
         public override void InstallBindings()
         {
             LevelSystem();
+            LootSystem();
             Container.Bind<GetRandomSpawnPoint>().FromNew().AsSingle().NonLazy();
             Container.Bind<DamageTextSpawner>().FromInstance(_damageTextSpawner).AsSingle().NonLazy();
             Container.Bind<GameTimer>().FromInstance(_gameTimer).AsSingle().NonLazy();
@@ -30,11 +35,19 @@ namespace DI
             Container.Bind<ExperienceSystem>().FromInstance(_experienceSystem).AsSingle().NonLazy();
             Container.Bind<UpgradeWindow>().FromInstance(_upgradeWindow).AsSingle().NonLazy();
             Container.Bind<GamePause>().FromInstance(_gamePause).AsSingle().NonLazy();
+            Container.Bind<RewardCoinsAnimation>().FromInstance(_rewardCoinsAnimation).AsSingle().NonLazy();
         }
 
         private void LevelSystem()
         {
             Container.Bind<LevelSystem>().FromInstance(_levelSystem).AsSingle().Lazy();
+        }
+
+        private void LootSystem()
+        {
+            Container.Bind<CoinsKeeper>().AsSingle().NonLazy();
+            Container.Bind<CoinsUIUpdater>().FromInstance(_coinsUIUpdater).AsSingle().NonLazy();
+            Container.Bind<TreasureWindow>().FromInstance(_treasureWindow).AsSingle().NonLazy();
         }
     }
 }
