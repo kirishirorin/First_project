@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameCore.Pause;
 using UnityEngine;
+using Zenject;
 
 namespace Player
 {
@@ -8,8 +11,16 @@ namespace Player
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Animator _animator;
+        private GamePause  _gamePause;
+        private float _initialSpeed;
         private Vector3 _movement;
         public Vector3 Movement => _movement;
+
+
+        private void Start()
+        {
+            _initialSpeed =  _moveSpeed;
+        }
 
         void Update()
         {
@@ -18,6 +29,7 @@ namespace Player
 
         public void Move()
         {
+            _moveSpeed = _gamePause.IsStopped ? 0f : _initialSpeed;
             _movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
             //_movement = new Vector3(Joystick.Horizontal, Joystick.Vertical, 0);
             
@@ -49,6 +61,17 @@ namespace Player
             _animator.SetFloat("Speed", _movement.sqrMagnitude);
         }
 
-        public void UpgradeSpeed() => _moveSpeed += 0.3f;
+        public void UpgradeSpeed()
+        {
+            _moveSpeed += 0.3f;
+            _initialSpeed =  _moveSpeed;
+        }
+
+
+        [Inject]
+        public void Inject(GamePause gamePause)
+        {
+            _gamePause = gamePause;
+        }
     }
 }

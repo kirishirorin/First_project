@@ -8,7 +8,7 @@ namespace GameCore.LevelSystem
 {
     public class LevelSystem : MonoBehaviour, IActivate
     {
-        public Action OnLevelChanged;
+        public Action OnLevelChanged; // event Action
         
         [SerializeField] private List<Level> _levels = new List<Level>();
         private GameTimer _gameTimer;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using GameCore.Pause;
 using Player;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Animator _animator;
     private Vector3 _direction;
     private PlayerMovement _playerMovement;
+    private GamePause _gamePause;
     private WaitForSeconds _checkTime = new WaitForSeconds(3f);
     private WaitForSeconds _freeze;
     private Coroutine _distanceToHide;
@@ -62,6 +64,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
+        _moveSpeed = _gamePause.IsStopped ? 0f : _initialSpeed;
         _direction = (_playerMovement.transform.position - transform.position).normalized;
         transform.position += _direction * (_moveSpeed * Time.deltaTime);
         _animator.SetFloat("Horizontal", _direction.x);
@@ -89,8 +92,9 @@ public class EnemyMovement : MonoBehaviour
         _moveSpeed = _initialSpeed;
     }
 
-    [Inject] private void Construct(PlayerMovement playerMovement)
+    [Inject] private void Construct(PlayerMovement playerMovement, GamePause gamePause)
     {
         _playerMovement = playerMovement;
+        _gamePause = gamePause;
     }
 }
