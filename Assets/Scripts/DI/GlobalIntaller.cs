@@ -1,5 +1,6 @@
 ﻿using Player;
 using Save;
+using ScenesLoader;
 using Zenject;
 
 namespace DI
@@ -10,6 +11,7 @@ namespace DI
         {
             Container.Bind<PlayerData>().FromNew().AsSingle().NonLazy();
             Container.Bind<SaveProgress>().FromNew().AsSingle().NonLazy();
+            Container.Bind<SceneLoader>().FromNew().AsSingle().NonLazy();
         }
     }
 }

@@ -5,6 +5,7 @@ using GameCore.Pause;
 using GameCore.UI;
 using Player;
 using Save;
+using ScenesLoader;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,7 @@ namespace GameCore.EndGame
         private PlayerData  _playerData;
         private SaveProgress _saveProgress;
         private GamePause  _gamePause;
+        private SceneLoader  _sceneLoader;
 
 
         private void OnEnable()
@@ -42,7 +44,7 @@ namespace GameCore.EndGame
         {
             _playerData.AddRewardCoins(_coins);
             _saveProgress.SaveData();
-            SceneManager.LoadSceneAsync(0);
+            _sceneLoader.MainMenu();
         }
 
         private IEnumerator CalculateCoins()
@@ -66,13 +68,15 @@ namespace GameCore.EndGame
                                RewardCoinsAnimation rewardCoinsAnimation,
                                PlayerData playerData,
                                SaveProgress saveProgress,
-                               GamePause  gamePause)
+                               GamePause  gamePause,
+                               SceneLoader sceneLoader)
         {
             _coinsKeeper = coinsKeeper;
             _rewardCoinsAnimation = rewardCoinsAnimation;
             _playerData = playerData;
             _saveProgress = saveProgress;
             _gamePause = gamePause;
+            _sceneLoader = sceneLoader;
         }
     }
 }

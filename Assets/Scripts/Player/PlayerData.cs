@@ -24,7 +24,7 @@ namespace Player
 
         public void AddRewardCoins(int value)
         {
-            if (value <= 0)
+            if (value < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(value));
             }
